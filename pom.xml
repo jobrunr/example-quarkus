@@ -108,7 +108,7 @@
                                 </goals>
                                 <configuration>
                                     <enableHttpUrlHandler>true</enableHttpUrlHandler>
-                                    <additionalBuildArgs>--allow-incomplete-classpath</additionalBuildArgs>
+                                    <additionalBuildArgs>--allow-incomplete-classpath,-H:IncludeResources=org/jobrunr/examples/.*/*.class,-H:Log=registerResource:verbose</additionalBuildArgs>
                                 </configuration>
                             </execution>
                         </executions>
