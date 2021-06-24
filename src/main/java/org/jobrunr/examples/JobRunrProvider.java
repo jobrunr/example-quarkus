@@ -28,8 +28,8 @@ public class JobRunrProvider {
 
     @Produces
     @Singleton
-    public BackgroundJobServer backgroundJobServer(StorageProvider storageProvider, JobActivator jobActivator) {
-        return new BackgroundJobServer(storageProvider, jobActivator);
+    public BackgroundJobServer backgroundJobServer(StorageProvider storageProvider, JsonMapper jsonMapper, JobActivator jobActivator) {
+        return new BackgroundJobServer(storageProvider, jsonMapper, jobActivator);
     }
 
     @Produces
