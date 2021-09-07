@@ -1,9 +1,11 @@
 package org.jobrunr.examples.services;
 
 import io.quarkus.runtime.annotations.RegisterForReflection;
+import org.jobrunr.jobs.annotations.Job;
 import org.jobrunr.jobs.context.JobContext;
 import org.jobrunr.jobs.context.JobDashboardProgressBar;
 import org.jobrunr.jobs.context.JobRunrDashboardLogger;
+import org.jobrunr.quarkus.annotations.Recurring;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -17,6 +19,12 @@ import javax.enterprise.context.ApplicationScoped;
 public class MyService implements MyServiceInterface {
 
     private static final Logger LOGGER = new JobRunrDashboardLogger(LoggerFactory.getLogger(MyService.class));
+
+    @Recurring(id = "my-recurring-job", cron = "*/15 * * * *")
+    @Job(name = "Doing some work")
+    public void aRecurringJob() {
+        System.out.println("Doing some work every 15 minutes.");
+    }
 
     public void doSimpleJob(String anArgument) {
         System.out.println("Doing some work: " + anArgument);
