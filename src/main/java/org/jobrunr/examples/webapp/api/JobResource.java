@@ -14,6 +14,9 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
+import java.time.Duration;
+
+import static java.time.Instant.now;
 
 @Path("jobs")
 @ApplicationScoped
@@ -31,6 +34,7 @@ public class JobResource {
                 "You can:<br />" +
                 "- <a href=\"/jobs/simple-job\">Enqueue a simple job</a><br />" +
                 "- <a href=\"/jobs/simple-job-instance\">Enqueue a simple job using a service instance</a><br />" +
+                "- <a href=\"/jobs/schedule-example-job\">Schedule a simple job 3 hours from now using a service instance</a><br />" +
                 "- <a href=\"/jobs/long-running-job\">Enqueue a long-running job</a><br />" +
                 "- <a href=\"/jobs/long-running-job-with-job-context\">Enqueue a long-running job using a JobContext to log progress</a><br />" +
                 "- Learn more on <a href=\"https://www.jobrunr.io/\">www.jobrunr.io</a><br />"
@@ -52,6 +56,16 @@ public class JobResource {
         final JobId enqueuedJobId = jobScheduler.enqueue(() -> myService.doSimpleJob(value));
 
         return "Job Enqueued: " + enqueuedJobId;
+    }
+
+    @GET
+    @Path("/schedule-example-job")
+    @Produces(MediaType.TEXT_PLAIN)
+    public String scheduleSimpleJob(
+            @DefaultValue("Hello world") @QueryParam("value") String value,
+            @DefaultValue("PT3H") @QueryParam("when") String when) {
+        final JobId scheduledJobId = jobScheduler.schedule(now().plus(Duration.parse(when)), () -> myService.doSimpleJob(value));
+        return "Job Scheduled: " + scheduledJobId;
     }
 
     @GET
