@@ -54,7 +54,6 @@ public class JobResource {
     @Produces(MediaType.TEXT_PLAIN)
     public String simpleJobUsingInstance(@DefaultValue("Hello world") @QueryParam("value") String value) {
         final JobId enqueuedJobId = jobScheduler.enqueue(() -> myService.doSimpleJob(value));
-
         return "Job Enqueued: " + enqueuedJobId;
     }
 
@@ -73,7 +72,6 @@ public class JobResource {
     @Produces(MediaType.TEXT_PLAIN)
     public String longRunningJob(@DefaultValue("Hello world") @QueryParam("value") String value) {
         final JobId enqueuedJobId = jobScheduler.<MyService>enqueue(myService -> myService.doLongRunningJob(value));
-
         return "Job Enqueued: " + enqueuedJobId;
     }
 
@@ -82,7 +80,6 @@ public class JobResource {
     @Produces(MediaType.TEXT_PLAIN)
     public String longRunningJobWithJobContext(@DefaultValue("Hello world") @QueryParam("value") String value) {
         final JobId enqueuedJobId = jobScheduler.<MyService>enqueue(myService -> myService.doLongRunningJobWithJobContext(value, JobContext.Null));
-
         return "Job Enqueued: " + enqueuedJobId;
     }
 
