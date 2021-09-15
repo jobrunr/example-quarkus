@@ -59,7 +59,7 @@ public class JobResource {
     }
 
     @GET
-    @Path("/schedule-example-job")
+    @Path("/schedule-simple-job")
     @Produces(MediaType.TEXT_PLAIN)
     public String scheduleSimpleJob(
             @DefaultValue("Hello world") @QueryParam("value") String value,
