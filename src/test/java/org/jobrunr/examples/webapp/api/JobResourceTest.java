@@ -7,7 +7,7 @@ import io.restassured.specification.RequestSpecification;
 import org.jobrunr.storage.StorageProvider;
 import org.junit.jupiter.api.Test;
 
-import javax.inject.Inject;
+import jakarta.inject.Inject;
 import java.time.Duration;
 import java.time.temporal.ChronoUnit;
 import java.util.UUID;

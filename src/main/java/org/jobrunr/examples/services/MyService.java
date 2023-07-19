@@ -9,7 +9,7 @@ import org.jobrunr.quarkus.annotations.Recurring;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.context.ApplicationScoped;
 
 /**
  * This is a simple service
