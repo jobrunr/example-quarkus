@@ -1,9 +1,11 @@
 package org.jobrunr.examples.webapp.api;
 
+import org.jobrunr.examples.jobhandlers.MyJobRequest;
 import org.jobrunr.examples.services.MyService;
 import org.jobrunr.examples.services.MyServiceInterface;
 import org.jobrunr.jobs.JobId;
 import org.jobrunr.jobs.context.JobContext;
+import org.jobrunr.scheduling.JobRequestScheduler;
 import org.jobrunr.scheduling.JobScheduler;
 
 import jakarta.enterprise.context.ApplicationScoped;
@@ -27,12 +29,16 @@ public class JobResource {
     @Inject
     JobScheduler jobScheduler;
 
+    @Inject
+    JobRequestScheduler jobRequestScheduler;
+
     @GET
     @Produces(MediaType.TEXT_HTML)
     public String index() {
         return "Hello World from JobResource!<br />" +
                 "You can:<br />" +
                 "- <a href=\"/jobs/simple-job\">Enqueue a simple job</a><br />" +
+                "- <a href=\"/jobs/simple-job-request\">Enqueue a simple job using a job request and job request handler</a><br />" +
                 "- <a href=\"/jobs/simple-job-instance\">Enqueue a simple job using a service instance</a><br />" +
                 "- <a href=\"/jobs/schedule-simple-job\">Schedule a simple job 3 hours from now using a service instance</a><br />" +
                 "- <a href=\"/jobs/long-running-job\">Enqueue a long-running job</a><br />" +
@@ -47,6 +53,14 @@ public class JobResource {
     public String simpleJob(@DefaultValue("Hello world") @QueryParam("value") String value) {
         final JobId enqueuedJobId = jobScheduler.<MyService>enqueue(myService -> myService.doSimpleJob(value));
         return "Job Enqueued: " + enqueuedJobId;
+    }
+
+    @GET
+    @Path("/simple-job-request")
+    @Produces(MediaType.TEXT_PLAIN)
+    public String simpleJobRequest(@DefaultValue("Hello world") @QueryParam("value") String value) {
+        final JobId enqueuedJobId = jobRequestScheduler.enqueue(new MyJobRequest(value));
+        return "Job Request Enqueued: " + enqueuedJobId;
     }
 
     @GET

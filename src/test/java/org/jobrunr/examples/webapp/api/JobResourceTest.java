@@ -43,6 +43,19 @@ class JobResourceTest {
     }
 
     @Test
+    public void testEnqueueSimpleJobInstance() {
+        RequestSpecification httpRequest = RestAssured.given();
+        String responseBody = httpRequest.get("/jobs/simple-job-instance").getBody().asString();
+        assertThat(responseBody).startsWith("Job Enqueued: ");
+
+        final UUID enqueuedJobId = UUID.fromString(substringAfter(responseBody, ": "));
+
+        await()
+                .atMost(30, TimeUnit.SECONDS)
+                .until(() -> storageProvider.getJobById(enqueuedJobId).hasState(SUCCEEDED));
+    }
+
+    @Test
     public void testScheduleSimpleJob() {
         RequestSpecification httpRequest = RestAssured.given();
         String responseBody = httpRequest.get("/jobs/schedule-simple-job?when=" + Duration.of(3, ChronoUnit.HOURS)).getBody().asString();
