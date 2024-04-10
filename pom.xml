@@ -7,13 +7,13 @@
     <version>1.0.0-SNAPSHOT</version>
 
     <properties>
-        <compiler-plugin.version>3.8.1</compiler-plugin.version>
-        <jobrunr.version>1.0.0-SNAPSHOT</jobrunr.version>
+        <compiler-plugin.version>3.11.0</compiler-plugin.version>
+        <jobrunr.version>7.0.0</jobrunr.version>
         <maven.compiler.parameters>true</maven.compiler.parameters>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <quarkus.version>3.1.0.Final</quarkus.version>
+        <quarkus.version>3.9.2</quarkus.version>
         <sql-lite.version>3.30.1</sql-lite.version>
         <surefire-plugin.version>2.22.1</surefire-plugin.version>
     </properties>

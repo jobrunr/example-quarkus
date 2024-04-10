@@ -1,15 +1,14 @@
 package org.jobrunr.examples.services;
 
 import io.quarkus.runtime.annotations.RegisterForReflection;
+import jakarta.enterprise.context.ApplicationScoped;
 import org.jobrunr.jobs.annotations.Job;
+import org.jobrunr.jobs.annotations.Recurring;
 import org.jobrunr.jobs.context.JobContext;
 import org.jobrunr.jobs.context.JobDashboardProgressBar;
 import org.jobrunr.jobs.context.JobRunrDashboardLogger;
-import org.jobrunr.quarkus.annotations.Recurring;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import jakarta.enterprise.context.ApplicationScoped;
 
 /**
  * This is a simple service
