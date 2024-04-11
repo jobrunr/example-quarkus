@@ -17,5 +17,3 @@ This project has the following packages:
   - Navigate to the JobRunr dashboard located at http://localhost:8000/dashboard.
   - To enqueue a simple job, open a new tab and go to http://localhost:8080/jobs/ and take it for there.
   - Visit the dashboard again and see the jobs being processed!
-
-> Note: Running quarkus apps with JobRunr natively is not yet supported. I'm currently looking into writing an extension to make this possible. See https://mail.google.com/mail/u/0/#inbox/FMfcgxwHNqMgLkzQfbqjwcFdpZbRdvrQ for more info
