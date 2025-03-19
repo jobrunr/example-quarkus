@@ -40,3 +40,20 @@ Caused by: java.lang.NoSuchMethodException: org.jobrunr.examples.webapp.api.JobR
 ```
 
 You have attempted to schedule a lambda in native mode and JobRunr cannot analyse the metadata to store the job. Instead, rely on `@Job` or the job request method and avoid injecting and using the `JobScheduler` directly.
+
+#### Keeping the binary size small
+
+If you do not want to enable the dashboard (or the background job server that processes jobs) on a particular cluster, you can disable packaging in these features by specifying this in your `application.properties`---see the [JobRunr Quarkus Extension docs](https://www.jobrunr.io/en/documentation/configuration/quarkus/):
+
+```
+quarkus.jobrunr.background-job-server.included=false
+quarkus.jobrunr.dashboard.included=false
+```
+
+Using Oracle GraalVM 23.0.2 on a macOS ARM64 machine, the binary sizes for this example project are:
+
+- Everything included: `91M`
+- Dashboard disabled and excluded: `89M`
+- Background job server disabled and excluded: `90M`
+- Everything excluded: `88M`
+
