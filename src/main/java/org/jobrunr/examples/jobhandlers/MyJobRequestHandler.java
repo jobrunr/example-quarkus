@@ -7,7 +7,7 @@ import org.jobrunr.jobs.lambdas.JobRequestHandler;
 public class MyJobRequestHandler implements JobRequestHandler<MyJobRequest> {
 
     @Override
-    public void run(MyJobRequest jobRequest) throws Exception {
-        System.out.println("Doing a test with " + jobRequest.getInput());
+    public void run(MyJobRequest jobRequest) {
+        System.out.println("Doing a test with " + jobRequest.input());
     }
 }

@@ -19,10 +19,10 @@ public class MyService implements MyServiceInterface {
 
     private static final Logger LOGGER = new JobRunrDashboardLogger(LoggerFactory.getLogger(MyService.class));
 
-    @Recurring(id = "my-recurring-job", cron = "*/15 * * * *")
+    @Recurring(id = "my-recurring-job", cron = "${app.recurring-job-cron}")
     @Job(name = "Doing some work")
     public void aRecurringJob() {
-        System.out.println("Doing some work every 15 minutes.");
+        System.out.println("Doing some work recurrently.");
     }
 
     public void doSimpleJob(String anArgument) {
