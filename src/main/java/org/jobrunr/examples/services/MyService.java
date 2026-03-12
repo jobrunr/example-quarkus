@@ -45,10 +45,10 @@ public class MyService implements MyServiceInterface {
             LOGGER.warn("Starting long running job...");
             final JobDashboardProgressBar progressBar = jobContext.progressBar(10);
             for (int i = 0; i < 10; i++) {
-                LOGGER.info(String.format("Processing item %d: %s", i, anArgument));
-                System.out.println(String.format("Doing work item %d: %s", i, anArgument));
+                LOGGER.info("Processing item {}: {}", i, anArgument);
+                System.out.printf("Doing work item %d: %s%n", i, anArgument);
                 Thread.sleep(15000);
-                progressBar.increaseByOne();
+                progressBar.incrementFailed();
             }
             LOGGER.warn("Finished long running job...");
         } catch (InterruptedException e) {

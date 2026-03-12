@@ -8,12 +8,12 @@
 
     <properties>
         <compiler-plugin.version>3.13.0</compiler-plugin.version>
-        <jobrunr.version>7.4.1</jobrunr.version>
+        <jobrunr.version>8.5.0</jobrunr.version>
         <maven.compiler.parameters>true</maven.compiler.parameters>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <quarkus.version>3.15.0</quarkus.version>
+        <quarkus.version>3.32.3</quarkus.version>
         <surefire-plugin.version>3.5.0</surefire-plugin.version>
     </properties>
 
