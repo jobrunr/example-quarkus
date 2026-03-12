@@ -2,6 +2,8 @@
 
 This repository shows an example how you can integrate JobRunr and [Quarkus](https://quarkus.io/).
 
+> If you are interested in running Quarkus with Kotlin and `kotlinx-serialization-json`, please take a look at our other example reposiotry at https://github.com/jobrunr/example-quarkus-kotlin instead.
+
 ## About this project
 
 This project has the following packages:
